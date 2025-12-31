@@ -13,7 +13,7 @@ type WalletAPI struct {
 
 // GetSpotBalance retrieves the spot wallet balance
 func (w *WalletAPI) GetSpotBalance() (*WalletBalance, error) {
-	resp, err := w.client.Get("/wallet/funds")
+	resp, err := w.client.Post("/wallet/funds", nil)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get spot balance: %w", err)
 	}
@@ -33,7 +33,7 @@ func (w *WalletAPI) GetSpotBalance() (*WalletBalance, error) {
 
 // GetFuturesBalance retrieves the futures wallet balance
 func (w *WalletAPI) GetFuturesBalance() (*FuturesBalance, error) {
-	resp, err := w.client.Get("/wallet/balance")
+	resp, err := w.client.Get("/futures/funds")
 	if err != nil {
 		return nil, fmt.Errorf("failed to get futures balance: %w", err)
 	}
